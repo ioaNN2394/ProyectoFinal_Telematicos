@@ -1,0 +1,77 @@
+Pruebas de carga con Sysbench
+
+1. Crear base de datos desde la maquina master
+
+DROP DATABASE IF EXISTS sbtest;
+CREATE DATABASE sbtest;
+
+2. Probar en la maquina cliente:
+
+Preparar datos
+
+sysbench \
+  --db-driver=mysql \
+  --mysql-user=cliente \
+  --mysql-password=cliente123 \
+  --mysql-host=192.168.50.5 \
+  --mysql-port=6446 \
+  --mysql-db=sbtest \
+  --tables=8 \
+  --table-size=100 \
+  --threads=4 \
+  --time=30 \
+  oltp_read_write \
+  prepare
+
+Prueba de lectura/escritura (maestra)
+
+sysbench \
+  --db-driver=mysql \
+  --mysql-user=cliente \
+  --mysql-password=cliente123 \
+  --mysql-host=192.168.50.5 \
+  --mysql-port=6446 \
+  --mysql-db=sbtest \
+  --tables=8 \
+  --table-size=100 \
+  --threads=4 \
+  --time=30 \
+  oltp_read_write \
+  run
+
+Prueba solo de lectura (esclavos)
+
+sysbench \
+  --db-driver=mysql \
+  --mysql-user=cliente \
+  --mysql-password=cliente123 \
+  --mysql-host=192.168.50.5 \
+  --mysql-port=6448 \
+  --mysql-db=sbtest \
+  --tables=8 \
+  --table-size=100 \
+  --threads=4 \
+  --time=30 \
+  oltp_read_only \
+  run
+
+Limpiar tablas de la base de datos (para hacer mas pruebas de carga)
+
+sysbench \
+  --db-driver=mysql \
+  --mysql-user=cliente \
+  --mysql-password=cliente123 \
+  --mysql-host=192.168.50.5 \
+  --mysql-port=6446 \
+  --mysql-db=sbtest \
+  --tables=8 \
+  --table-size=100 \
+  --threads=4 \
+  --time=30 \
+  oltp_read_write \
+  cleanup
+
+
+
+
+
