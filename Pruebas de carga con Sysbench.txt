@@ -1,11 +1,16 @@
 Pruebas de carga con Sysbench
 
-1. Crear base de datos desde la maquina master
+1. Instalamos Sysbench en la máquina cliente
+
+sudo apt update
+sudo apt install mysql-client sysbench -y
+
+2. Se crea base de datos desde la maquina master
 
 DROP DATABASE IF EXISTS sbtest;
 CREATE DATABASE sbtest;
 
-2. Probar en la maquina cliente:
+3. Probar en la maquina cliente:
 
 Preparar datos
 
