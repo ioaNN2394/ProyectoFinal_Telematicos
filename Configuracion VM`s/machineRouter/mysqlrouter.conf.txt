@@ -1,0 +1,6 @@
+[routing:rw]
+bind_port = 6446
+destinations = metadata-cache://mycluster/?role=PRIMARY
+[routing:ro]
+bind_port = 6447
+destinations = metadata-cache://mycluster/?role=SECONDARY

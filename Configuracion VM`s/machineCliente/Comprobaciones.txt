@@ -1,0 +1,32 @@
+### 1 · Ver la tabla y su contenido
+
+
+mysql -h machineRouter -P 6447 \
+      -e "SELECT * FROM universidad.UsuariosUniversidad;"
+
+
+*Puerto 6447 = ruta **solo‑lectura**; no importa cuál esclavo responda.*
+
+
+### 2 · Mostrar qué nodos están solo‑lectura (loop opcional)
+
+
+while true; do
+  mysql -h machineRouter -P 6447 \
+        -e "SELECT @@hostname AS nodo, @@read_only AS RO_flag;"
+  sleep 1
+done
+
+
+
+### 3 · Mostrar el nodo que acepta lectura + escritura
+
+
+while true; do
+  mysql -h machineRouter -P 6446 \
+        -e "SELECT @@hostname AS primario, @@read_only AS RO_flag;"
+  sleep 1
+done
+
+
+El host que aparece (con `RO_flag = 0`) es el **primario** actual.

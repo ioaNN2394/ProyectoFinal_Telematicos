@@ -1,0 +1,4 @@
+mysqlsh --uri clusteradmin@192.168.50.2 -- dba create-cluster mycluster
+dba get-cluster              -- comprueba estado
+dba get-cluster add-instance clusteradmin@192.168.50.3:3306
+dba get-cluster add-instance clusteradmin@192.168.50.4:3306

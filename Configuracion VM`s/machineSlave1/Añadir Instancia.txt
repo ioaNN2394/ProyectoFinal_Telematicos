@@ -1,0 +1,2 @@
+cluster.addInstance('clusteradmin@192.168.50.3:3306',
+{recoveryMethod:'clone', waitRecovery:true});

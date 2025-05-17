@@ -1,0 +1,25 @@
+[mysqld]
+##############################################################
+## InnoDB Cluster / Group Replication – SLAVE 2 (solo‑lectura)
+##############################################################
+
+server_id       = 2
+report_host     = 192.168.50.4
+bind-address    = 0.0.0.0
+
+gtid_mode                           = ON
+enforce_gtid_consistency            = ON
+log_bin                              = mysql-bin
+binlog_format                       = ROW
+binlog_checksum                     = NONE
+binlog_transaction_dependency_tracking = WRITESET
+transaction_write_set_extraction       = XXHASH64
+
+plugin_load_add                    = 'group_replication.so'
+loose-group_replication_group_name = "aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee"
+loose-group_replication_start_on_boot = OFF
+loose-group_replication_bootstrap_group = OFF
+loose-group_replication_local_address  = "192.168.50.4:33061"
+loose-group_replication_group_seeds    = "192.168.50.2:33061,192.168.50.3:33061,192.168.50.4:33061"
+loose-group_replication_single_primary_mode = ON
+loose-group_replication_enforce_update_everywhere_checks = OFF

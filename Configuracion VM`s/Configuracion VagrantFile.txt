@@ -1,0 +1,35 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+Vagrant.configure("2") do |config|
+
+  config.vm.define :machineMaster do |machineMaster| #Maquina MYSQL maestra. Tendra permisos de lectura y escritura
+          machineMaster.vm.box = "bento/ubuntu-22.04"
+          machineMaster.vm.network :private_network, ip: "192.168.50.2"
+          machineMaster.vm.hostname = "machineMaster"
+  end
+  config.vm.define :machineSlave1 do |machineSlave1| #Maquina MYSQL Esclava 1. Tendra permisos solo de lectura
+          machineSlave1.vm.box = "bento/ubuntu-22.04"
+          machineSlave1.vm.network :private_network, ip: "192.168.50.3"
+          machineSlave1.vm.hostname = "machineSlave1"
+  end
+
+  config.vm.define :machineSlave2 do |machineSlave2|#Maquina MYSQL Esclava 2. Tendra permisos solo de lectura
+        machineSlave2.vm.box = "bento/ubuntu-22.04"
+        machineSlave2.vm.network :private_network, ip: "192.168.50.4"
+        machineSlave2.vm.hostname = "machineSlave2"
+  end
+
+  config.vm.define :machineRouter do |machineRouter| #Maquina MYSQL Router
+        machineRouter.vm.box = "bento/ubuntu-22.04"
+        machineRouter.vm.network :private_network, ip: "192.168.90.5"
+        machineRouter.vm.hostname = "machineRouter"
+  end
+
+  config.vm.define :cliente do |cliente| #Maquina cliente, para realizar consultar varias y probar funcionamiento
+        cliente.vm.box = "bento/ubuntu-22.04"
+        cliente.vm.network :private_network, ip: "192.168.50.6"
+        cliente.vm.hostname = "cliente"
+  end
+
+end

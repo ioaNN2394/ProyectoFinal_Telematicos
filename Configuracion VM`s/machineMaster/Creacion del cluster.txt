@@ -1,0 +1,2 @@
+CREATE USER 'clusteradmin'@'%' IDENTIFIED BY 'Str0ngP@ss!';
+GRANT ALL PRIVILEGES ON *.* TO 'clusteradmin'@'%' WITH GRANT OPTION;

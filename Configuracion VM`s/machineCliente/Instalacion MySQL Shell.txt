@@ -1,0 +1,4 @@
+wget -qO- https://repo.mysql.com/RPM-GPG-KEY-mysql-2023 | sudo apt-key add -
+echo "deb http://repo.mysql.com/apt/ubuntu/ jammy mysql-8.0 mysql-tools" | \
+  sudo tee /etc/apt/sources.list.d/mysql.list
+sudo apt-get update
