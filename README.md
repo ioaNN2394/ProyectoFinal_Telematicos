@@ -2,13 +2,13 @@
 
 # Integrantes
 
-Johan Sebastian Quimbayo Azcarate
+* Johan Sebastian Quimbayo Azcarate
 
-Jonathan Steven Narvaez Navia
+* Jonathan Steven Narvaez Navia
 
-Simon Colonia Amador
+* Simon Colonia Amador
 
-Juan David Moreno Mañunga
+* Juan David Moreno Mañunga
 
 
 
