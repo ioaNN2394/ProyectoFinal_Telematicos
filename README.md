@@ -3,9 +3,13 @@
 # Integrantes
 
 Johan Sebastian Quimbayo Azcarate
+
 Jonathan Steven Narvaez Navia
+
 Simon Colonia Amador
+
 Juan David Moreno Mañunga
+
 
 
 # Entregable a subir: Informe en formato IEEE, máx. 7 páginas.
